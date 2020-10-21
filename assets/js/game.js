@@ -65,3 +65,5 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
 for(var i = 0; i < enemyNames.length; i++) {
     fight(enemyNames[i]);
   }
+
+  fight();
