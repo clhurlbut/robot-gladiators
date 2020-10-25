@@ -1,37 +1,3 @@
-var startGame = function () {
-
-  // reset player stats
-  playerInfo.reset();
-
-  for (var i = 0; i < enemyInfo.length; i++) {
-    if (playerInfo.health > 0) {
-      window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
-
-      var pickedEnemyObj = enemyInfo[i];
-      pickedEnemyObj.health = randomNumber(40, 60);
-      fight(pickedEnemyObj);
-      // if we're not at the last enemy in the array
-      if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
-
-        // ask if player wants to use the store before next round
-        var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
-
-        // if yes, take them to the store() function
-        if (storeConfirm) {
-          shop();
-        }
-      }
-      else {
-        window.alert("You have lost your robot in battle! Game Over!");
-        break;
-      }
-    }
-  }
-  // after the loop ends, player is either out of health or enemies to fight, so run the endGame function
-
-  endGame();
-
-};
 
 var fight = function (enemy) {
   while (playerInfo.health > 0 && enemy.health > 0) {
@@ -92,6 +58,41 @@ var fight = function (enemy) {
       window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
     }
   }
+};
+
+var startGame = function () {
+
+  // reset player stats
+  playerInfo.reset();
+
+  for (var i = 0; i < enemyInfo.length; i++) {
+    if (playerInfo.health > 0) {
+      window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
+
+      var pickedEnemyObj = enemyInfo[i];
+      pickedEnemyObj.health = randomNumber(40, 60);
+      fight(pickedEnemyObj);
+      // if we're not at the last enemy in the array
+      if (playerInfo.health > 0 && i < enemyInfo.length - 1) {
+
+        // ask if player wants to use the store before next round
+        var storeConfirm = window.confirm("The fight is over, visit the store before the next round?");
+
+        // if yes, take them to the store() function
+        if (storeConfirm) {
+          shop();
+        }
+      }
+      else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        break;
+      }
+    }
+  }
+  // after the loop ends, player is either out of health or enemies to fight, so run the endGame function
+
+  endGame();
+
 };
 
 var endGame = function () {
@@ -161,7 +162,7 @@ var getPlayerName = function() {
     name = prompt("What is your robot's name?");
   }
 
-  console.log("Your robot's name is " + name);
+  console.log("Your robot's name is "  + name);
   return name;
 };
 
